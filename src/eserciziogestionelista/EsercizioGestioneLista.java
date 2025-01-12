@@ -15,7 +15,8 @@ public class EsercizioGestioneLista {
 
         do {
 
-            System.out.println("1) Inserimento di un elemento in testa alla lista;\n"
+            System.out.println("0) Uscita dal programma;\n"+
+                    "1) Inserimento di un elemento in testa alla lista;\n"
                     + "2) Inserimento di un elemento in coda alla lista;\n"
                     + "3) Visualizzazione della lista;\n"
                     + "4) Conteggio degli elementi della lista;\n"
@@ -56,16 +57,48 @@ public class EsercizioGestioneLista {
                     }
                     System.out.print(".");
                     System.exit(0);
-                    break;
+                    break; //metodo figo per uscire dal programma ᕙ(▀̿ĺ̯▀̿ ̿)ᕗ
 
                 case 1:
-                    System.out.println("inserire un valore intero alla ''testa'' della lista ");
-                    lista.inserimentoTesta(Integer.parseInt(input.nextLine()));
+
+                    boolean errore1 = true; //non mi permette di chiamarlo con la stessa variabile
+                    //non ho "tempo" per una implementazione con java.lang.Exception
+                    //quindi si riccorre con errore, errore1, errore2, errore3 ecc...
+                    do {
+
+                        System.out.println("inserire un valore intero alla ''testa'' della lista ");
+
+                        try {
+
+                            lista.inserimentoTesta(Integer.parseInt(input.nextLine()));
+                            errore1 = false;
+
+                        } catch (Exception e) {
+                            System.out.println("Inserita una parola invece che un numero " + e.getMessage());
+                        }
+
+                    } while (errore1 != false);
+
                     break;
 
                 case 2:
-                    System.out.println("inserire un valore intero nella 'coda' della lista");
-                    lista.inserimentoCoda(Integer.parseInt(input.nextLine()));
+                    boolean errore2 = true; //ecco
+
+                    do {
+
+                        System.out.println("inserire un valore intero nella 'coda' della lista");
+
+                        try {
+
+                            lista.inserimentoCoda(Integer.parseInt(input.nextLine()));
+                            errore2 = false;
+
+                        } catch (Exception e) {
+                            System.out.println("Inserita una parola invece che un numero " + e.getMessage());
+                        }
+
+                    } while (errore2 != false);
+                   
                     break;
 
                 case 3:
@@ -76,6 +109,7 @@ public class EsercizioGestioneLista {
                 case 4:
                     System.out.println("Dimensione lista: ");
                     System.out.println(lista.conteggio());
+
                     break;
 
                 case 5:
@@ -85,13 +119,32 @@ public class EsercizioGestioneLista {
                     break;
 
                 case 6:
-                    //System.out.println("occorrenza: ");
-                    // System.out.println(lista.occorrenza(valore, true));
-                    System.out.println("disabilitato");
+                    System.out.println("occorrenza: ");
+                    int ValoreDaTrovare = 0;
+                    boolean errore = true; //toh
+
+                    do {
+
+                        System.out.println("inserisci il valore da Cercare nella lista");
+
+                        try {
+                            ValoreDaTrovare = Integer.parseInt(input.nextLine());
+                            errore = false;
+                        } catch (Exception e) {
+
+                            System.out.println("Inserita una parola invece che un numero " + e.getMessage());
+
+                        }
+
+                    } while (errore != false);
+
+                    System.out.println(lista.occorrenza(ValoreDaTrovare));
+
                     break;
 
                 case 7:
-                    System.out.println("disabilitato");
+                    System.out.println("elementi sotto la media: ");
+                    System.out.println(lista.elementiSottoLaMedia());
                     break;
 
                 case 8:

@@ -1,7 +1,6 @@
 package eserciziogestionelista;
 
 import java.util.Scanner;
-import java.util.List;
 
 public class Lista {
 
@@ -58,6 +57,7 @@ public class Lista {
         }
         return stringa;
     }
+// potrei anche rimuovere conteggiopriv()...
 
     public int conteggio() {
 
@@ -88,15 +88,11 @@ public class Lista {
 
     public int somma() {
 
-        int dime = conteggio();
-
         Nodo aux = new Nodo();
+        aux = testa;
 
         int somma = 0;
-
-        for (int i = 0; i < dime; i++) {
-
-            aux = testa;
+        while (aux != null) {
 
             somma += aux.getValore();
             aux = aux.getNext();
@@ -113,24 +109,41 @@ public class Lista {
         float mediatot = 0;
 
         mediatot = (float) somma() / dim;
-        return String.valueOf(mediatot);
+        return String.valueOf(mediatot); //per qualche motivo prima non divideva per "dim" adesso mo va
 
     }
 
-  /*  public boolean occorrenza(int occ) {
-        boolean occ2;
+    public boolean occorrenza(int valore) { //spiegoooo: la variabile aux è assegnata con il valore della variabile testa
+        Nodo aux = new Nodo();
+
+        aux = testa;
+
+        while (aux != null) { //ciclo while finche la lista non ha valore 
+            if (aux.getValore() == valore) {
+                return true; // se il valore è uguale alla posizione della lista ritorna true 
+            }
+            aux = aux.getNext();// e va avanti 
+        }
+
+        return false; // se non ci sono valori simili allora è falso 
+    }
+
+    public int elementiSottoLaMedia() {
         Nodo aux = new Nodo();
         aux = testa;
-        System.out.println("inserisci il valore per verificare se è presente nella lista: ");
-        occ = Integer.parseInt(input.nextLine());
-        if (occ != aux.getValore()) {
-            aux = aux.getNext();
-            if (occ != aux.getValore()) {
-               return  occ2 = false;
+
+        int conta = 0;
+
+        float media = somma() / conteggio();
+
+        while (aux != null) {
+            if (aux.getValore() < media) {
+                conta++;
             }
-        } else {
-            return  occ2 = true;
+            aux = aux.getNext();
         }
-        return occ2;
-    }*/
+
+        return conta;
+
+    }
 }
