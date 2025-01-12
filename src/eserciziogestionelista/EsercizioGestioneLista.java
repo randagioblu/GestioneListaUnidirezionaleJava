@@ -63,7 +63,7 @@ public class EsercizioGestioneLista {
 
                     boolean errore1 = true; //non mi permette di chiamarlo con la stessa variabile
                     //non ho "tempo" per una implementazione con java.lang.Exception
-                    //quindi si riccorre con errore, errore1, errore2, errore3 ecc...
+                    //quindi si ricorre con errore, errore1, errore2, errore3 ecc...
                     do {
 
                         System.out.println("inserire un valore intero alla ''testa'' della lista ");
